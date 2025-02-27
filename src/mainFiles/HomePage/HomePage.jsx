@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Projects from "../ProjectsPage/ProjectPage";
 
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -410,7 +411,7 @@ export default function HomePage() {
       {/* ABOUT ME SECTION */}
       <section
         id="aboutMe"
-        className="bg-[#404040] items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:p-60 pt-28 pb-36 md:flex-row md:pb-48 scroll-smooth"
+        className="bg-[#404040] justify-center items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:pr-60 lg:pl-60 pt-28 pb-20 md:flex-row md:pb-1 scroll-smooth"
       >
         <div className="mt-8">
           <div className="flex w-full items-center">
@@ -439,7 +440,7 @@ export default function HomePage() {
                 creating something from scratch and watching it all come together.
               </p>
               <br />
-              <p>Here's a picture of me if you were wondering what I look like:</p>
+              <p>Here's a picture of me if you were wondering what I look like ;)</p>
             </div>
 
             <div className="flex-1 flex justify-end">
@@ -449,7 +450,7 @@ export default function HomePage() {
                     <div className="relative">
                       <img
                         alt="A picture of me"
-                        src="src/mainFiles/AboutPage/ImgMe/testImg3.jpg"
+                        src="src\assets\ImgMe\testImg3.jpg"
                         className="rounded brightness-90 transition group-hover:brightness-100 group-hover:saturate-100"
                       />
                     </div>
@@ -469,6 +470,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+{/* 
+     Projects Section  */}
+
+<Projects></Projects>
+
+
     </section>
   );
 }
