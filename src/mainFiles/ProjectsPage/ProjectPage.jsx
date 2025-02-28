@@ -171,7 +171,7 @@ const ProjectCard = ({ project, isAlternate = false }) => {
         onClick={openModal}
       >
         {/* Desktop overlay at the top */}
-        <div className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 z-20 hidden md:flex">
+        <div className="absolute top-0 left-0 right-0   items-center justify-between p-4 z-20 hidden md:flex">
           <button
             onClick={openModal}
             className="text-sm font-semibold text-white hover:underline"
