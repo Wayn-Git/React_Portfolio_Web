@@ -197,6 +197,20 @@ export default function HomePage() {
               </svg>
             </span>
           </a>
+
+          {/* Resume Button in Mobile Menu */}
+          <a
+  href="/Bilal_Resume.pdf"
+  download
+  onClick={() => setIsOpen(false)}
+  className="relative flex h-12 w-40 items-center justify-center font-bold mx-auto overflow-hidden border-2 border-white bg-transparent text-white shadow-2xl transition-all duration-500 group hover:text-white hover:border-transparent"
+>
+  <span className="relative z-10">Resume</span>
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
+  </div>
+</a>
+
         </div>
       </section>
 
@@ -215,7 +229,6 @@ export default function HomePage() {
             stroke="currentColor"
           >
             {isOpen ? (
-              // Close (X) Icon
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -223,7 +236,6 @@ export default function HomePage() {
                 d="M6 6L18 18M6 18L18 6"
               />
             ) : (
-              // Hamburger Icon
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -235,46 +247,51 @@ export default function HomePage() {
         </button>
       </header>
 
-      {/* Desktop Header with Resume Button */}
-      <header className="w-full justify-end gap-7 px-4 sm:px-8 hidden lg:flex">
-        <button
-          className="text-primary-800 transition-colors dark:text-white z-50"
-          aria-label="Toggle light mode"
-          title="Toggle light mode"
-        >
-          <svg
-            className="w-8 transition-colors hover:text-yellow-500"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="12" cy="12" r="4" />
-            <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
-          </svg>
-          <svg
-            className="w-8 transition-colors hover:text-primary-200 hidden"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            strokeWidth="2"
-            stroke="currentColor"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
-          </svg>
-        </button>
-        <button className="ResumeButtonLG relative h-12 w-40 overflow-hidden border-2 border-primary-900 text-primary-800 shadow-2xl transition-all duration-500 group hover:text-white font-bold dark:border-white dark:text-white dark:hover:text-primary-800 z-50">
-          <span className="relative z-10">Resume</span>
-          <div className="absolute inset-0 z-0 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
-          </div>
-        </button>
-      </header>
+{/* Desktop Header with Resume Button */}
+<header className="w-full flex justify-end gap-7 px-4 sm:px-8 hidden lg:flex pt-4 transform -translate-x-2 translate-y-2">
+  <button
+    className="text-primary-800 transition-colors dark:text-white z-50 lg:pt-10"
+    aria-label="Toggle light mode"
+    title="Toggle light mode"
+  >
+    <svg
+      className="w-8 transition-colors hover:text-yellow-500"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+    </svg>
+    <svg
+      className="w-8 transition-colors hover:text-primary-200 hidden"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      strokeWidth="2"
+      stroke="currentColor"
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </button>
+  <a
+    href="/Bilal_Resume.pdf"
+    download
+    className="mt-10 relative flex h-12 w-40 items-center justify-center overflow-hidden border-2 border-primary-900 text-primary-800 shadow-2xl transition-all duration-500 group font-bold dark:border-white dark:text-white dark:hover:text-primary-800 z-50"
+  >
+    <span className="relative z-10">Resume</span>
+    <div className="absolute inset-0 z-0 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
+    </div>
+  </a>
+</header>
+
 
       {/* Main Content */}
       <main className="scroll-smooth pl-6 lg:pl-30 lg:pr-30 lg:pt-10 flex flex-col">
@@ -380,115 +397,114 @@ export default function HomePage() {
           </ul>
         </nav>
 
+        <div className="w-full max-w-2xl flex flex-col items-left text-left pt-34 mx-auto mt-16 px-4 sm:px-8 lg:mt-0">
+          <p className="mt-4 font-bold text-gray-600 dark:text-gray-400 w-full">
+            Hey - I'm
+          </p>
+          <div className="bg-[#283F13] mt-3 flex max-w-fit flex-col whitespace-nowrap rounded bg-primary-800 px-2 pt-1 pb-3 font-mono text-5xl sm:text-5xl font-semibold tracking-tight text-white shadow-lg dark:font-bold sm:flex-row lg:text-6xl">
+            Bilal
+            <span className="ml-2">Rukundi</span>
+          </div>
+          <h2 className="mt-4 font-heading text-4xl sm:text-5xl font-bold text-gray-600 dark:text-gray-300 lg:text-6xl">
+            I like to explore tech
+          </h2>
+          <p className="m-2 mt-8 max-w-2xl text-gray-600 dark:text-gray-300">
+            I'm an AI and ML student from{" "}
+            <span className="bg-gradient-to-br from-primary-800 to-primary-500 bg-clip-text font-semibold text-[#98CC68] dark:from-primary-500 dark:to-primary-200">
+              India, Maharashtra
+            </span>
+            . This is my portfolio! In a nutshell, I like making things and
+            exploring new technologies.
+          </p>
+          {/* Projects button now an anchor linking to #projects */}
+          <a
+            href="#projects"
+            className="relative h-12 w-40 overflow-hidden border-2 border-primary-800 text-primary-800 shadow-2xl transition-all duration-500 group hover:text-white font-bold dark:border-white dark:text-white dark:hover:text-primary-800 mt-8 inline-flex items-center justify-center"
+          >
+            <span className="relative z-10">Projects</span>
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
+            </div>
+          </a>
+        </div>
       </main>
 
-        {/* Main Content Section */}
-        <main className="scroll-smooth pl-6 lg:pl-30 lg:pr-30 lg:pt-10 flex flex-col">
-          <div className="w-full max-w-2xl flex flex-col items-left text-left pt-34 mx-auto mt-16 px-4 sm:px-8 lg:mt-0">
-            <p className="mt-4 font-bold text-gray-600 dark:text-gray-400 w-full">
-              Hey - I'm
-            </p>
-            <div className="bg-[#283F13] mt-3 flex max-w-fit flex-col whitespace-nowrap rounded bg-primary-800 px-2 pt-1 pb-3 font-mono text-5xl sm:text-5xl font-semibold tracking-tight text-white shadow-lg dark:font-bold sm:flex-row lg:text-6xl">
-              Bilal
-              <span className="ml-2">Rukundi</span>
-            </div>
-            <h2 className="mt-4 font-heading text-4xl sm:text-5xl font-bold text-gray-600 dark:text-gray-300 lg:text-6xl">
-              I like to explore tech
-            </h2>
-            <p className="m-2 mt-8 max-w-2xl text-gray-600 dark:text-gray-300">
-              I'm an AI and ML student from{" "}
-              <span className="bg-gradient-to-br from-primary-800 to-primary-500 bg-clip-text font-semibold text-[#98CC68] dark:from-primary-500 dark:to-primary-200">
-                India, Maharashtra
-              </span>
-              . This is my portfolio! In a nutshell, I like making things and
-              exploring new technologies.
-            </p>
-            <button className="relative h-12 w-40 overflow-hidden border-2 border-primary-800 text-primary-800 shadow-2xl transition-all duration-500 group hover:text-white font-bold dark:border-white dark:text-white dark:hover:text-primary-800 mt-8">
-              <span className="relative z-10">Projects</span>
-              <div className="absolute inset-0 z-0 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
-              </div>
-            </button>
+      {/* ABOUT ME SECTION */}
+      <section
+        id="aboutMe"
+        className="bg-[#404040] justify-center items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:pr-60 lg:pl-60 pt-28 pb-20 md:flex-row md:pb-1 scroll-smooth"
+      >
+        <div className="mt-8">
+          <div className="flex w-full items-center">
+            <h3 className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-widest dark:text-white">
+              About me
+            </h3>
+            <div className="mx-8 h-0.5 w-full rounded bg-gray-200"></div>
           </div>
-        </main>
 
-        {/* ABOUT ME SECTION */}
-        <section
-          id="aboutMe"
-          className="bg-[#404040] justify-center items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:pr-60 lg:pl-60 pt-28 pb-20 md:flex-row md:pb-1 scroll-smooth"
-        >
-          <div className="mt-8">
-            <div className="flex w-full items-center">
-              <h3 className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-widest dark:text-white">
-                About me
-              </h3>
-              <div className="mx-8 h-0.5 w-full rounded bg-gray-200"></div>
+          <div className="flex flex-col lg:flex-row mt-4 text-gray-600 dark:text-gray-300 gap-8">
+            <div className="flex-1">
+              <p>
+                Hey! My name is Bilal. I'm a programmer and an AI/ML student who
+                enjoys exploring the world of technology. Outside of studying, I
+                spend my time coding, reading, working out, and sometimes just
+                staring at the sky, lost in thought. I find peace in the little
+                things—cold nights, the sound of rain, and the quiet stillness
+                of nature.
+              </p>
+              <br />
+              <p>
+                When it comes to building things, I believe in simplicity. I
+                like clean, minimal, and well-structured code. Whether it's
+                designing a UI or organizing a database, I prefer solutions that
+                are efficient and easy to understand. There's something
+                satisfying about creating something from scratch and watching it
+                all come together.
+              </p>
+              <br />
+              <p>
+                Here's a picture of me if you were wondering what I look like ;)
+              </p>
             </div>
 
-            <div className="flex flex-col lg:flex-row mt-4 text-gray-600 dark:text-gray-300 gap-8">
-              <div className="flex-1">
-                <p>
-                  Hey! My name is Bilal. I'm a programmer and an AI/ML student who
-                  enjoys exploring the world of technology. Outside of studying, I
-                  spend my time coding, reading, working out, and sometimes just
-                  staring at the sky, lost in thought. I find peace in the little
-                  things—cold nights, the sound of rain, and the quiet stillness
-                  of nature.
-                </p>
-                <br />
-                <p>
-                  When it comes to building things, I believe in simplicity. I
-                  like clean, minimal, and well-structured code. Whether it's
-                  designing a UI or organizing a database, I prefer solutions that
-                  are efficient and easy to understand. There's something
-                  satisfying about creating something from scratch and watching it
-                  all come together.
-                </p>
-                <br />
-                <p>
-                  Here's a picture of me if you were wondering what I look like ;)
-                </p>
-              </div>
-
-              <div className="flex-1 flex justify-end">
-                <div className="mt-8 max-w-xs pr-5">
-                  <div className="relative">
-                    <div className="group relative z-10 transition-transform hover:translate-x-3 hover:translate-y-3">
-                      <div className="relative">
-                        <img
-                          alt="A picture of me"
-                          src="ImgMe/MeIMG2.jpg"
-                          className="rounded brightness-90 transition group-hover:brightness-100 group-hover:saturate-100"
-                        />
-                      </div>
-                      <div className="absolute top-0 h-[98%] w-full bg-primary-800/30 transition-colors group-hover:bg-transparent"></div>
+            <div className="flex-1 flex justify-end">
+              <div className="mt-8 max-w-xs pr-5">
+                <div className="relative">
+                  <div className="group relative z-10 transition-transform hover:translate-x-3 hover:translate-y-3">
+                    <div className="relative">
+                      <img
+                        alt="A picture of me"
+                        src="ImgMe/MeIMG2.jpg"
+                        className="rounded brightness-90 transition group-hover:brightness-100 group-hover:saturate-100"
+                      />
                     </div>
-                    <div
-                      className="absolute top-0 mt-4 ml-6 h-full w-full from-primary-800 dark:from-white"
-                      style={{
-                        backgroundSize: "20px 20px",
-                        backgroundImage:
-                          "linear-gradient(to right, var(--tw-gradient-from) 1px, transparent 1px), linear-gradient(to bottom, var(--tw-gradient-from) 1px, transparent 1px)",
-                      }}
-                    ></div>
+                    <div className="absolute top-0 h-[98%] w-full bg-primary-800/30 transition-colors group-hover:bg-transparent"></div>
                   </div>
+                  <div
+                    className="absolute top-0 mt-4 ml-6 h-full w-full from-primary-800 dark:from-white"
+                    style={{
+                      backgroundSize: "20px 20px",
+                      backgroundImage:
+                        "linear-gradient(to right, var(--tw-gradient-from) 1px, transparent 1px), linear-gradient(to bottom, var(--tw-gradient-from) 1px, transparent 1px)",
+                    }}
+                  ></div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-        {/* Projects Section */}
-        <Projects />
-
-        {/* Experience Section */}
-        <ExperienceSection />
-
-        {/* Toolbox Section */}
-        <Toolbox />
-
-        {/* Contact Section */}
-        <ContactPage />
+        </div>
       </section>
-    
+      {/* Projects Section */}
+      <Projects />
+
+      {/* Experience Section */}
+      <ExperienceSection />
+
+      {/* Toolbox Section */}
+      <Toolbox />
+
+      {/* Contact Section */}
+      <ContactPage />
+    </section>
   );
 }
