@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Projects from "../ProjectsPage/ProjectPage";
+import ExperienceSection from "../ExperiencePage/ExperiencePage";
 
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
@@ -240,7 +241,7 @@ export default function HomePage() {
       <main className="scroll-smooth pl-6 lg:pl-30 lg:pr-30 lg:pt-10 flex flex-col">
         <nav className="scroll-smooth hidden z-999 h-[101vh] w-20 lg:block absolute items-center justify-center pt-50">
           <ul className="scroll-smooth fixed flex h-screen flex-col gap-10 text-primary-800 dark:text-white lg:w-20 xl:w-0">
-            <li >
+            <li>
               <a href="#aboutMe" title="About" className="scroll-smooth">
                 <svg
                   className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
@@ -428,19 +429,22 @@ export default function HomePage() {
                 enjoys exploring the world of technology. Outside of studying, I
                 spend my time coding, reading, working out, and sometimes just
                 staring at the sky, lost in thought. I find peace in the little
-                things—cold nights, the sound of rain, and the quiet stillness of
-                nature.
+                things—cold nights, the sound of rain, and the quiet stillness
+                of nature.
               </p>
               <br />
               <p>
-                When it comes to building things, I believe in simplicity. I like
-                clean, minimal, and well-structured code. Whether it's designing a
-                UI or organizing a database, I prefer solutions that are efficient
-                and easy to understand. There's something satisfying about
-                creating something from scratch and watching it all come together.
+                When it comes to building things, I believe in simplicity. I
+                like clean, minimal, and well-structured code. Whether it's
+                designing a UI or organizing a database, I prefer solutions that
+                are efficient and easy to understand. There's something
+                satisfying about creating something from scratch and watching it
+                all come together.
               </p>
               <br />
-              <p>Here's a picture of me if you were wondering what I look like ;)</p>
+              <p>
+                Here's a picture of me if you were wondering what I look like ;)
+              </p>
             </div>
 
             <div className="flex-1 flex justify-end">
@@ -470,12 +474,15 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-{/* 
+      {/* 
      Projects Section  */}
 
-<Projects></Projects>
+      <Projects />
 
+      {/* Experience Section */}
 
+      {/* Experience Section */}
+      <ExperienceSection />
     </section>
   );
 }
