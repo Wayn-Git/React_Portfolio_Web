@@ -19,12 +19,17 @@ function ContactPage() {
       
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
           <div className="flex gap-3">
-            <button className="relative h-12 w-32 font-bold overflow-hidden border-2 border-white bg-transparent text-white shadow-2xl transition-all duration-500 group hover:text-white hover:border-transparent">
-              <span className="relative z-10">Resume</span>
-              <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-100 scale-y-0 group-hover:scale-y-100 origin-bottom" />
-              </div>
-            </button>
+          <a
+  href="/Bilal_Resume.pdf"
+  download
+  onClick={() => setIsOpen(false)}
+  className="relative flex h-12 w-40 items-center justify-center font-bold mx-auto overflow-hidden border-2 border-white bg-transparent text-white shadow-2xl transition-all duration-500 group hover:text-white hover:border-transparent"
+>
+  <span className="relative z-10">Resume</span>
+  <div className="absolute inset-0 -z-10 overflow-hidden">
+    <div className="absolute inset-0 bg-gradient-to-r from-[#8ACA4F] to-[#B6E89A] transition-transform duration-500 scale-y-0 group-hover:scale-y-100 origin-bottom transform" />
+  </div>
+</a>
 
             <button className="relative h-12 w-28 font-bold overflow-hidden border-2 border-white bg-transparent text-white shadow-2xl transition-all duration-500 group hover:text-white hover:border-transparent">
               <span className="relative z-10">Mail</span>
@@ -37,7 +42,7 @@ function ContactPage() {
           <ul className="flex items-center gap-4 mt-4 sm:mt-0 sm:ml-4">
             <li>
               <a
-                href="https://github.com/MartinP460"
+                href="https://github.com/EjramWay"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github profile"
@@ -54,7 +59,7 @@ function ContactPage() {
             </li>
             <li>
               <a
-                href="https://www.linkedin.com/in/martin-polley-37b907247/"
+                href="https://www.linkedin.com/in/bilal-rukundi/"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="LinkedIn profile"
