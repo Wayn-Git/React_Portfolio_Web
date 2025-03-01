@@ -244,7 +244,7 @@ const Projects = () => {
         "A simple yet handy finance tracker built with HTML, CSS, and JavaScript—because keeping track of money shouldn't feel like rocket science. Log expenses, set budgets, and maybe (just maybe) stop wondering where all your money went.",
       image: "ProjectImg/FinanceManager.png",
       technologies: ["HTML", "CSS", "Javascript"],
-      github: "https://github.com/MartinP460/react-denmark-map",
+      github: "https://github.com/EjramWay/Finance_Tracker",
       demo: "https://react-denmark-map.vercel.app/demo",
       slug: "#",
     },
