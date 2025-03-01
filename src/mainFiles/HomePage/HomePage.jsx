@@ -474,7 +474,7 @@ export default function HomePage() {
                     <div className="relative">
                       <img
                         alt="A picture of me"
-                        src="ImgMe/MeIMG2.jpg"
+                        src="ImgMe/MeIMG3.jpg"
                         className="rounded brightness-90 transition group-hover:brightness-100 group-hover:saturate-100"
                       />
                     </div>
