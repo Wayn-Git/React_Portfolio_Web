@@ -245,7 +245,7 @@ const Projects = () => {
       image: "ProjectImg/FinanceManager.png",
       technologies: ["HTML", "CSS", "Javascript"],
       github: "https://github.com/EjramWay/Finance_Tracker",
-      demo: "https://react-denmark-map.vercel.app/demo",
+      demo: "https://finance-tracker-lilac-theta.vercel.app/",
       slug: "#",
     },
     {
@@ -255,7 +255,7 @@ const Projects = () => {
       image: "ProjectImg/PortfolioWeb.png",
       technologies: ["React", "Tailwind", "Javascript"],
       github: "https://github.com/EjramWay/Finance_Tracker",
-      demo: "https://finance-tracker-lilac-theta.vercel.app/",
+      demo: "https://bilal-portfolio-omega.vercel.app/",
       slug: "#",
     },
     {
@@ -267,6 +267,16 @@ const Projects = () => {
       github: "https://github.com/EjramWay/Gemeni_Clone",
       demo: "https://gemeni-clone-sigma.vercel.app/",
       slug: "https://gemeni-clone-sigma.vercel.app/",
+    },
+    {
+      title: "Nasa Daily Picture",
+      description:
+        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It’s got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
+      image: "public/ProjectImg/Nasa.png",
+      technologies: ["Next.js", "TailwindCSS", "Strapi"],
+      github: "https://github.com/EjramWay/Nasa_Images",
+      demo: "https://nasaimages-delta.vercel.app/",
+      slug: "https://nasaimages-delta.vercel.app/",
     },
   ];
 
