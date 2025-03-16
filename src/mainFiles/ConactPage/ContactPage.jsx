@@ -42,7 +42,7 @@ function ContactPage() {
           <ul className="flex items-center gap-4 mt-4 sm:mt-0 sm:ml-4">
             <li>
               <a
-                href="https://github.com/EjramWay"
+                href="https://github.com/Wayn-Git"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Github profile"
