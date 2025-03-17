@@ -239,6 +239,16 @@ const ProjectCard = ({ project, isAlternate = false }) => {
 const Projects = () => {
   const projects = [
     {
+      title: "FilmFusion",
+      description:
+        "Film Fusion is a sleek movie and TV show discovery site built with React and Tailwind, featuring trending, top-rated, and upcoming content using the TMDB API.",
+      image: "ProjectImg/FilmFusion.png",
+      technologies: ["React", "Tailwind", "Javascript"],
+      github: "https://github.com/Wayn-Git/FilmFusion",
+      demo: "https://filmfusionwayn.vercel.app/",
+      slug: "#",
+    },
+    {
       title: "Javascript Finance Manager",
       description:
         "A simple yet handy finance tracker built with HTML, CSS, and JavaScript—because keeping track of money shouldn't feel like rocket science. Log expenses, set budgets, and maybe (just maybe) stop wondering where all your money went.",
@@ -248,16 +258,7 @@ const Projects = () => {
       demo: "https://finance-tracker-lilac-theta.vercel.app/",
       slug: "#",
     },
-    {
-      title: "Portfolio",
-      description:
-        "A sleek and minimal portfolio website built with React, Tailwind CSS, and JavaScript—because first impressions matter. Showcasing projects, skills, and a bit of personality, all wrapped in a clean, responsive design. Simple, effective, and just cool enough to stand out.",
-      image: "ProjectImg/PortfolioWeb.png",
-      technologies: ["React", "Tailwind", "Javascript"],
-      github: "https://github.com/Wayn-Git/Finance_Tracker",
-      demo: "https://bilal-portfolio-omega.vercel.app/",
-      slug: "#",
-    },
+    
     {
       title: "Gemini Clone",
       description:
@@ -277,6 +278,16 @@ const Projects = () => {
       github: "https://github.com/Wayn-Git/Nasa_Images",
       demo: "https://nasaimages-delta.vercel.app/",
       slug: "https://nasaimages-delta.vercel.app/",
+    },
+    {
+      title: "React Portfolio Web",
+      description:
+        "A sleek and minimal portfolio website built with React, Tailwind CSS, and JavaScript—because first impressions matter. Showcasing projects, skills, and a bit of personality, all wrapped in a clean, responsive design. Simple, effective, and just cool enough to stand out.",
+      image: "ProjectImg/PortfolioWeb.png",
+      technologies: ["React", "Tailwind", "Javascript"],
+      github: "https://github.com/Wayn-Git/Finance_Tracker",
+      demo: "https://bilal-portfolio-omega.vercel.app/",
+      slug: "#",
     },
     
   ];
