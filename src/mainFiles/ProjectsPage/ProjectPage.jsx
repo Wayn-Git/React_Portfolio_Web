@@ -272,12 +272,13 @@ const Projects = () => {
       title: "Nasa Daily Picture",
       description:
         "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It’s got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
-      image: "public/ProjectImg/Nasa.png",
+      image: "ProjectImg/Nasa.png",
       technologies: ["Next.js", "TailwindCSS", "Strapi"],
       github: "https://github.com/Wayn-Git/Nasa_Images",
       demo: "https://nasaimages-delta.vercel.app/",
       slug: "https://nasaimages-delta.vercel.app/",
     },
+    
   ];
 
   return (
