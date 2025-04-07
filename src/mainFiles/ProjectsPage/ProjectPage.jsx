@@ -272,7 +272,7 @@ const Projects = () => {
     {
       title: "Nasa Daily Picture",
       description:
-        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It’s got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
+        "A sleek React-based web app that connects with NASA’s public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen. Built for space lovers and tech geeks alike.",
       image: "ProjectImg/Nasa.png",
       technologies: ["Next.js", "TailwindCSS", "Strapi"],
       github: "https://github.com/Wayn-Git/Nasa_Images",
