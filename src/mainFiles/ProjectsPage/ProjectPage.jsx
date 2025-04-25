@@ -76,7 +76,9 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       setMounted(true);
       // Trigger active state after component mounts
       requestAnimationFrame(() => {
-        setIsActive(true);
+        requestAnimationFrame(() => {
+          setIsActive(true);
+        });
       });
     } else {
       // Immediately deactivate for closing animation
@@ -95,27 +97,31 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0908]/50 backdrop-blur-2xl transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0908]/50 backdrop-blur-2xl transition-all duration-500 ease-in-out ${
         isActive ? "opacity-100" : "opacity-0"
       }`}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className={`bg-[#0A0908] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_10px_rgba(255,255,255,0.2)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
-          isActive ? "scale-100 opacity-100" : "scale-90 opacity-0"
+        className={`bg-[#0A0908] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_20px_rgba(255,255,255,0.3)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
+          isActive ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-10"
         }`}
         onTransitionEnd={handleTransitionEnd}
       >
         {/* Modal content remains the same */}
-        <div className="relative mb-4">
-          <img
-            src={project.image}
-            alt={`${project.title} project`}
-            className="w-full h-full object-cover rounded"
-          />
+        <div className="relative mb-4 w-full">
+          <div className="w-full pt-[56.25%] relative">
+            <div className="absolute inset-0">
+              <img
+                src={project.image}
+                alt={`${project.title} project`}
+                className="w-full h-full object-cover rounded"
+              />
+            </div>
+          </div>
           <button
             onClick={onClose}
-            className="absolute top-1 right-2 bg-[#0A0908]/50 bg-opacity-20 backdrop-blur-3xl text-white rounded-[20%] p-2 transition-colors hover:bg-opacity-30 duration-200"
+            className="absolute top-4 right-4 text-white rounded-full p-2 bg-black/50 hover:bg-black/70"
           >
             ✕
           </button>
@@ -165,27 +171,32 @@ const ProjectCard = ({ project, isAlternate = false }) => {
     <li className="flex flex-col md:flex-row items-center">
       {/* Image Section */}
       <div 
-        className={`relative mt-5 pl-4 min-h-[14rem] w-full md:w-3/5 cursor-pointer overflow-hidden md:mt-0 ${
+        className={`relative mt-5 pl-4 w-full md:w-3/5 cursor-pointer overflow-hidden md:mt-0 ${
           isAlternate ? "order-1" : "order-2"
         }`}
         onClick={openModal}
       >
         {/* Desktop overlay at the top */}
-        <div className="absolute top-0 left-0 right-0   items-center justify-between p-4 z-20 hidden md:flex">
+        <div className="absolute top-0 left-0 right-0 items-center justify-between px-6 py-5 z-20 hidden md:flex">
           <button
-            onClick={openModal}
+            onClick={(e) => {
+              e.stopPropagation();
+              openModal();
+            }}
             className="text-sm font-semibold text-white hover:underline"
           >
             Read More
           </button>
           <SocialLinks github={github} demo={demo} />
         </div>
-        <div className="absolute top-0 left-0 bottom-0 right-0 overflow-hidden">
-          <img 
-            src={image} 
-            alt={`${title} project`} 
-            className="w-full h-full object-cover rounded brightness-90 hover:brightness-100 transition-all duration-300 ease-in-out transform hover:scale-105"
-          />
+        <div className="w-full pt-[56.25%] relative overflow-hidden">
+          <div className="absolute inset-0">
+            <img 
+              src={image} 
+              alt={`${title} project`} 
+              className="w-full h-full object-cover rounded brightness-90 hover:brightness-100 transition-all duration-500 ease-in-out transform hover:scale-105"
+            />
+          </div>
         </div>
       </div>
       
@@ -210,7 +221,7 @@ const ProjectCard = ({ project, isAlternate = false }) => {
         </p>
         
         {/* Mobile: "Read More" + Social Links below */}
-        <div className="order-last mt-4 flex items-center justify-between md:hidden">
+        <div className="order-last mt-4 flex items-center justify-between px-2 pb-2 md:hidden">
           <button 
             onClick={openModal}
             className="text-sm font-semibold text-white hover:underline"
@@ -262,7 +273,7 @@ const Projects = () => {
     {
       title: "Gemini Clone",
       description:
-        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It’s got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
+        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It's got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
       image: "ProjectImg/GeminiClone.png",
       technologies: ["Next.js", "TailwindCSS", "Strapi"],
       github: "https://github.com/Wayn-Git/Gemeni_Clone",
@@ -272,7 +283,7 @@ const Projects = () => {
     {
       title: "Nasa Daily Picture",
       description:
-        "A sleek React-based web app that connects with NASA’s public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen. Built for space lovers and tech geeks alike.",
+        "A sleek React-based web app that connects with NASA's public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen. Built for space lovers and tech geeks alike.",
       image: "ProjectImg/Nasa.png",
       technologies: ["Next.js", "TailwindCSS", "Strapi"],
       github: "https://github.com/Wayn-Git/Nasa_Images",
