@@ -16,7 +16,7 @@ export default function HomePage() {
   }, [isOpen]);
 
   return (
-    <section className="bg-[#404040] scroll-smooth h-[101vh] w-full relative">
+    <section className="bg-[#0A0908] scroll-smooth h-[101vh] w-full relative">
       {/* Mobile Menu Section */}
       <section
         id="Menu"
@@ -248,7 +248,7 @@ export default function HomePage() {
       </header>
 
 {/* Desktop Header with Resume Button */}
-<header className="w-full flex justify-end gap-7 px-4 sm:px-8 hidden lg:flex pt-4 transform -translate-x-2 translate-y-2">
+<header className="w-full justify-end gap-7 px-4 sm:px-8 hidden lg:flex pt-4 transform -translate-x-2 translate-y-2">
   <button
     className="text-primary-800 transition-colors dark:text-white z-50 lg:pt-10"
     aria-label="Toggle light mode"
@@ -295,7 +295,7 @@ export default function HomePage() {
 
       {/* Main Content */}
       <main className="scroll-smooth pl-6 lg:pl-30 lg:pr-30 lg:pt-10 flex flex-col">
-        <nav className="scroll-smooth hidden z-999 h-[101vh] w-20 lg:block absolute items-center justify-center pt-50">
+        <nav className="scroll-smooth hidden z-999 h-[101vh] w-20 lg:block absolute items-center justify-center pt-35">
           <ul className="scroll-smooth fixed flex h-screen flex-col gap-10 text-primary-800 dark:text-white lg:w-20 xl:w-0">
             <li>
               <a href="#aboutMe" title="About" className="scroll-smooth">
@@ -401,7 +401,7 @@ export default function HomePage() {
           <p className="mt-4 font-bold text-gray-600 dark:text-gray-400 w-full">
             Hey - I'm
           </p>
-          <div className="bg-[#283F13] mt-3 flex max-w-fit flex-col whitespace-nowrap rounded bg-primary-800 px-2 pt-1 pb-3 font-mono text-5xl sm:text-5xl font-semibold tracking-tight text-white shadow-lg dark:font-bold sm:flex-row lg:text-6xl">
+          <div className="bg-[#22333B] mt-3 flex max-w-fit flex-col whitespace-nowrap rounded bg-primary-800 px-2 pt-1 pb-3 font-mono text-5xl sm:text-5xl font-semibold tracking-tight text-white shadow-lg dark:font-bold sm:flex-row lg:text-6xl">
             Bilal
             <span className="ml-2">Rukundi</span>
           </div>
@@ -410,7 +410,7 @@ export default function HomePage() {
           </h2>
           <p className="m-2 mt-8 max-w-2xl text-gray-600 dark:text-gray-300">
             I'm an AI and ML student from{" "}
-            <span className="bg-gradient-to-br from-primary-800 to-primary-500 bg-clip-text font-semibold text-[#98CC68] dark:from-primary-500 dark:to-primary-200">
+            <span className="bg-gradient-to-br from-primary-800 to-primary-500 bg-clip-text font-semibold text-[#C6AC8F] dark:from-primary-500 dark:to-primary-200">
               India, Maharashtra
             </span>
             . This is my portfolio! In a nutshell, I like making things and
@@ -432,7 +432,7 @@ export default function HomePage() {
       {/* ABOUT ME SECTION */}
       <section
         id="aboutMe"
-        className="bg-[#404040] justify-center items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:pr-60 lg:pl-60 pt-28 pb-20 md:flex-row md:pb-1 scroll-smooth"
+        className="bg-[#0A0908] justify-center items-center gap-x-8 flex flex-col min-h-screen w-full relative p-3 lg:pr-60 lg:pl-60 pt-28 pb-20 md:flex-row md:pb-1 scroll-smooth"
       >
         <div className="mt-8">
           <div className="flex w-full items-center">

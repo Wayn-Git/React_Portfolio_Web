@@ -2,7 +2,7 @@ import React from "react";
 
 function ToolBox() {
   return (
-    <section id="toolbox" className="bg-[#404040] pt-40 scroll-smooth lg:pr-60 lg:pl-60 h- p-3 w-full relative">
+    <section id="toolbox" className="bg-[#0A0908] pt-40 scroll-smooth lg:pr-60 lg:pl-60 h- p-3 w-full relative">
       <div className="flex w-full mb-10 items-center">
         <h3 className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-widest dark:text-white">
           Toolbox

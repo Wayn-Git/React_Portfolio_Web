@@ -4,13 +4,13 @@
 //   const [isOpen, setIsOpen] = useState(false);
 
 //   return (
-//     <section className="bg-[#404040] flex flex-col min-h-screen w-full relative p-3 lg:p-60">
+//     <section className="bg-[#0A0908] flex flex-col min-h-screen w-full relative p-3 lg:p-60">
 //       {/* Mobile/Tablet Navigation Section */}
-//       <section className="bg-[#404040] relative">
+//       <section className="bg-[#0A0908] relative">
 //         {/* Mobile Menu – only visible on small screens */}
 //         <section
 //           id="Menu"
-//           className={`w-full h-full bg-[#283F13]/70 z-50 p-0 m-0 backdrop-blur-md transition-all duration-100 fixed lg:hidden ${
+//           className={`w-full h-full bg-[#22333B]/70 z-50 p-0 m-0 backdrop-blur-md transition-all duration-100 fixed lg:hidden ${
 //             isOpen ? "opacity-100 visible" : "opacity-0 invisible"
 //           }`}
 //         >

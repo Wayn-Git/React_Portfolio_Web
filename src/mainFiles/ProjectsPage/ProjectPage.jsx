@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 const GithubIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    fill="rgb(110, 173, 52)"
+    fill="#5E503F"
     className="h-7 w-7"
     viewBox="0 0 16 16"
   >
@@ -18,7 +18,7 @@ const ExternalLinkIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     strokeWidth="2"
-    stroke="rgb(110, 173, 52)"
+    stroke="#5E503F"
     fill="none"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -30,7 +30,7 @@ const ExternalLinkIcon = () => (
 
 // Simplified components
 const TechTag = ({ children }) => (
-  <span className="rounded-lg bg-[rgba(60,94,28,0.8)] px-2 py-1 text-sm text-gray-200">
+  <span className="rounded-lg bg-[#C6AC8F] px-2 py-1 text-sm font-bold text-[#22333B]">
     {children}
   </span>
 );
@@ -95,13 +95,13 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#404040]/50 backdrop-blur-2xl transition-opacity duration-500 ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0908]/50 backdrop-blur-2xl transition-opacity duration-500 ease-in-out ${
         isActive ? "opacity-100" : "opacity-0"
       }`}
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
-        className={`bg-[#404040] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_10px_rgba(255,255,255,0.2)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
+        className={`bg-[#0A0908] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_10px_rgba(255,255,255,0.2)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
           isActive ? "scale-100 opacity-100" : "scale-90 opacity-0"
         }`}
         onTransitionEnd={handleTransitionEnd}
@@ -115,7 +115,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
           />
           <button
             onClick={onClose}
-            className="absolute top-1 right-2 bg-[#404040]/50 bg-opacity-20 backdrop-blur-3xl text-white rounded-[20%] p-2 transition-colors hover:bg-opacity-30 duration-200"
+            className="absolute top-1 right-2 bg-[#0A0908]/50 bg-opacity-20 backdrop-blur-3xl text-white rounded-[20%] p-2 transition-colors hover:bg-opacity-30 duration-200"
           >
             ✕
           </button>
@@ -294,7 +294,7 @@ const Projects = () => {
 
   return (
     <section
-      className="bg-[#404040] py-36 md:py-48 justify-center items-center px-3 lg:px-60"
+      className="bg-[#0A0908] py-36 md:py-48 justify-center items-center px-3 lg:px-60"
       id="projects"
     >
       <div className="flex w-full items-center">

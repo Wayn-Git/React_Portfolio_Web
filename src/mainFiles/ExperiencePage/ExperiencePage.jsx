@@ -3,7 +3,7 @@ import React from "react";
 const ExperienceSection = () => {
   return (
     <section
-      className="bg-[#404040] w-full md:pr-20 md:pl-20 flex flex-col lg:pr-60 lg:pl-60 items-center pt-28 pb-36 md:pb-48"
+      className="bg-[#0A0908] w-full md:pr-20 md:pl-20 flex flex-col lg:pr-60 lg:pl-60 items-center pt-28 pb-36 md:pb-48"
       id="work"
     >
       {/* Section Heading */}

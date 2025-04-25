@@ -2,7 +2,7 @@ import React from "react";
 
 function ContactPage() {
   return (
-    <section id="contact" className="bg-[#404040] pb-40 pt-70 scroll-smooth lg:pr-60 lg:pl-60 p-3 w-full relative">
+    <section id="contact" className="bg-[#0A0908] pb-40 pt-70 scroll-smooth lg:pr-60 lg:pl-60 p-3 w-full relative">
       <div className="flex w-full items-center pb-10">
         <h3 className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-widest dark:text-white">
           Contact
