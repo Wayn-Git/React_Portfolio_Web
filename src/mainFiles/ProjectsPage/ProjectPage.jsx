@@ -74,21 +74,25 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen) {
       setMounted(true);
-      // Trigger active state after component mounts
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          setIsActive(true);
-        });
-      });
+      document.body.style.overflow = "hidden";
+      // Ensure DOM update before animation
+      const timer = setTimeout(() => {
+        setIsActive(true);
+      }, 50);
+      return () => clearTimeout(timer);
     } else {
-      // Immediately deactivate for closing animation
       setIsActive(false);
+      // Reset body overflow after animation completes
+      const timer = setTimeout(() => {
+        document.body.style.overflow = "";
+      }, 500);
+      return () => clearTimeout(timer);
     }
   }, [isOpen]);
 
   const handleTransitionEnd = () => {
     // Only unmount when closing animation completes
-    if (!isOpen) {
+    if (!isOpen && !isActive) {
       setMounted(false);
     }
   };
@@ -100,7 +104,11 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0908]/50 backdrop-blur-2xl transition-all duration-500 ease-in-out ${
         isActive ? "opacity-100" : "opacity-0"
       }`}
-      onClick={(e) => e.target === e.currentTarget && onClose()}
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
     >
       <div
         className={`bg-[#0A0908] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_20px_rgba(255,255,255,0.3)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
@@ -153,28 +161,27 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 // Simplified Project Card Component
 const ProjectCard = ({ project, isAlternate = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const { title, description, image, technologies, github, demo, slug } = project;
   
   const openModal = () => {
     setIsModalOpen(true);
-    document.body.style.overflow = "hidden";
   };
   
   const closeModal = () => {
     setIsModalOpen(false);
-    setTimeout(() => {
-      document.body.style.overflow = "";
-    }, 300);
   };
   
   return (
     <li className="flex flex-col md:flex-row items-center">
       {/* Image Section */}
       <div 
-        className={`relative mt-5 pl-4 w-full md:w-3/5 cursor-pointer overflow-hidden md:mt-0 ${
-          isAlternate ? "order-1" : "order-2"
+        className={`relative w-full md:w-3/5 cursor-pointer overflow-hidden mb-4 md:mb-0 md:mt-0 ${
+          isAlternate ? "md:order-1" : "md:order-2"
         }`}
         onClick={openModal}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Desktop overlay at the top */}
         <div className="absolute top-0 left-0 right-0 items-center justify-between px-6 py-5 z-20 hidden md:flex">
@@ -189,12 +196,14 @@ const ProjectCard = ({ project, isAlternate = false }) => {
           </button>
           <SocialLinks github={github} demo={demo} />
         </div>
-        <div className="w-full pt-[56.25%] relative overflow-hidden">
+        <div className="w-full pt-[50%] md:pt-[56.25%] relative overflow-hidden">
           <div className="absolute inset-0">
             <img 
               src={image} 
               alt={`${title} project`} 
-              className="w-full h-full object-cover rounded brightness-90 hover:brightness-100 transition-all duration-500 ease-in-out transform hover:scale-105"
+              className={`w-full h-full object-cover rounded transition-all duration-700 ease-in-out ${
+                isHovered ? "scale-105 brightness-100" : "scale-100 brightness-90"
+              }`}
             />
           </div>
         </div>
@@ -202,17 +211,17 @@ const ProjectCard = ({ project, isAlternate = false }) => {
       
       {/* Info Section */}
       <div 
-        className={`flex w-full flex-col md:w-2/5 md:min-h-[300px] ${
-          isAlternate ? "order-2 md:ml-10" : "order-1 md:mr-6"
+        className={`flex w-full flex-col md:w-2/5 px-4 md:px-0 ${
+          isAlternate ? "md:order-2 md:ml-10" : "md:order-1 md:mr-6"
         }`}
       >
-        <div className="flex flex-wrap gap-2 mt-3">
+        <div className="flex flex-wrap gap-2 mt-0 md:mt-3">
           {technologies.map((tech, index) => (
             <TechTag key={index}>{tech}</TechTag>
           ))}
         </div>
         
-        <h4 className="mt-3 font-heading text-4xl font-semibold dark:text-white">
+        <h4 className="mt-3 font-heading text-3xl font-semibold dark:text-white">
           {title}
         </h4>
         
@@ -221,7 +230,7 @@ const ProjectCard = ({ project, isAlternate = false }) => {
         </p>
         
         {/* Mobile: "Read More" + Social Links below */}
-        <div className="order-last mt-4 flex items-center justify-between px-2 pb-2 md:hidden">
+        <div className="mt-4 flex items-center justify-between px-2 pb-2 md:hidden">
           <button 
             onClick={openModal}
             className="text-sm font-semibold text-white hover:underline"
@@ -243,8 +252,6 @@ const ProjectCard = ({ project, isAlternate = false }) => {
     </li>
   );
 };
-
-
 
 // Main Projects component
 const Projects = () => {
