@@ -70,18 +70,35 @@ const SocialLinks = ({ github, demo }) => (
 const ProjectModal = ({ project, isOpen, onClose }) => {
   const [mounted, setMounted] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
 
   useEffect(() => {
     if (isOpen) {
       setMounted(true);
       document.body.style.overflow = "hidden";
+      
+      // Hide navigation bar when modal is open
+      const navBar = document.querySelector('nav.scroll-smooth');
+      if (navBar) navBar.style.display = 'none';
+      
       // Ensure DOM update before animation
       const timer = setTimeout(() => {
         setIsActive(true);
+        // Delay content animation
+        const contentTimer = setTimeout(() => {
+          setContentVisible(true);
+        }, 400);
+        return () => clearTimeout(contentTimer);
       }, 50);
       return () => clearTimeout(timer);
     } else {
+      setContentVisible(false);
       setIsActive(false);
+      
+      // Show navigation bar when modal is closed
+      const navBar = document.querySelector('nav.scroll-smooth');
+      if (navBar) navBar.style.display = '';
+      
       // Reset body overflow after animation completes
       const timer = setTimeout(() => {
         document.body.style.overflow = "";
@@ -101,7 +118,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-[#0A0908]/50 backdrop-blur-2xl transition-all duration-500 ease-in-out ${
+      className={`fixed inset-0 z-50 flex items-center justify-center transition-all duration-500 ease-in-out ${
         isActive ? "opacity-100" : "opacity-0"
       }`}
       onClick={(e) => {
@@ -111,46 +128,198 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       }}
     >
       <div
-        className={`bg-[#0A0908] w-full max-w-4xl max-h-[90vh] overflow-auto shadow-[0_0_20px_rgba(255,255,255,0.3)] rounded-lg p-6 transition-all duration-500 ease-in-out transform ${
-          isActive ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-10"
+        className={`fixed inset-0 bg-[#0A0908] overflow-auto transition-all duration-600 ease-out transform ${
+          isActive ? "translate-y-0" : "translate-y-full"
         }`}
         onTransitionEnd={handleTransitionEnd}
       >
-        {/* Modal content remains the same */}
-        <div className="relative mb-4 w-full">
-          <div className="w-full pt-[56.25%] relative">
-            <div className="absolute inset-0">
+        {/* Close button (floating) */}
+        <button
+          onClick={onClose}
+          className="fixed top-6 right-6 z-50 flex items-center justify-center h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all duration-300 shadow-lg"
+          style={{ 
+            transform: isActive ? 'scale(1)' : 'scale(0.8)',
+            opacity: isActive ? 1 : 0,
+            transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
+            transitionDelay: '0.2s'
+          }}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-6">
+          {/* Hero section with large image */}
+          <div 
+            className="relative w-full h-[60vh] md:h-[70vh] lg:h-[75vh] overflow-hidden rounded-lg shadow-2xl"
+            style={{ 
+              transform: isActive ? 'translateY(0)' : 'translateY(40px)',
+              opacity: isActive ? 1 : 0,
+              transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
+              transitionDelay: '0.1s'
+            }}
+          >
+            <div className="absolute inset-0 bg-black">
               <img
                 src={project.image}
                 alt={`${project.title} project`}
-                className="w-full h-full object-cover rounded"
+                className="w-full h-full object-contain md:object-cover"
+                style={{
+                  transition: 'transform 10s ease-in-out',
+                  transform: contentVisible ? 'scale(1.03)' : 'scale(1)'
+                }}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/40 to-transparent"></div>
+            </div>
+            
+            <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-10">
+              <div 
+                className="flex flex-wrap gap-2 mb-4"
+                style={{ 
+                  transform: contentVisible ? 'translateY(0)' : 'translateY(20px)',
+                  opacity: contentVisible ? 1 : 0,
+                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                  transitionDelay: '0.6s'
+                }}
+              >
+                {project.technologies.map((tech, index) => (
+                  <TechTag key={index}>{tech}</TechTag>
+                ))}
+              </div>
+              <h3 
+                className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-2 drop-shadow-lg"
+                style={{ 
+                  transform: contentVisible ? 'translateY(0)' : 'translateY(30px)',
+                  opacity: contentVisible ? 1 : 0,
+                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                  transitionDelay: '0.4s'
+                }}
+              >
+                {project.title}
+              </h3>
+            </div>
+            
+            {/* Image controls - zoom/expand */}
+            <div 
+              className="absolute top-4 right-20 z-10"
+              style={{ 
+                opacity: contentVisible ? 1 : 0,
+                transition: 'opacity 0.3s ease-out',
+                transitionDelay: '0.8s'
+              }}
+            >
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(project.image, '_blank');
+                }}
+                className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-all duration-300"
+                title="View full image"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+                </svg>
+              </button>
             </div>
           </div>
-          <button
-            onClick={onClose}
-            className="absolute top-4 right-4 text-white rounded-full p-2 bg-black/50 hover:bg-black/70"
-          >
-            ✕
-          </button>
-        </div>
 
-        <div className="flex flex-col">
-          <div className="flex flex-wrap gap-2 mb-3">
-            {project.technologies.map((tech, index) => (
-              <TechTag key={index}>{tech}</TechTag>
-            ))}
-          </div>
-
-          <h3 className="font-heading text-3xl font-semibold dark:text-white mb-4">
-            {project.title}
-          </h3>
-
-          <p className="text-gray-300 mb-6">{project.description}</p>
-
-          <div className="flex justify-between">
-            <ProjectLink href={project.demo}>Visit Demo</ProjectLink>
-            <SocialLinks github={project.github} demo={project.demo} />
+          {/* Main content in a two-column layout on desktop */}
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Left column - Main content */}
+            <div className="md:col-span-2">
+              {/* Project summary */}
+              <div 
+                className="mb-12"
+                style={{ 
+                  transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                  opacity: contentVisible ? 1 : 0,
+                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                  transitionDelay: '0.5s'
+                }}
+              >
+                <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">Overview</h4>
+                <p className="text-gray-300 md:text-lg leading-relaxed">{project.description}</p>
+              </div>
+              
+              {/* Features section - if project has features */}
+              {project.features && (
+                <div 
+                  className="mb-12"
+                  style={{ 
+                    transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                    opacity: contentVisible ? 1 : 0,
+                    transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                    transitionDelay: '0.6s'
+                  }}
+                >
+                  <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">Key Features</h4>
+                  <ul className="list-disc pl-5 text-gray-300 md:text-lg space-y-3 leading-relaxed">
+                    {project.features.map((feature, index) => (
+                      <li key={index}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            
+            {/* Right column - Meta information and actions */}
+            <div className="md:col-span-1">
+              <div 
+                className="bg-[#22333B]/10 rounded-lg p-6 sticky top-10"
+                style={{ 
+                  transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                  opacity: contentVisible ? 1 : 0,
+                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
+                  transitionDelay: '0.7s'
+                }}
+              >
+                {/* Tech stack details */}
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-white mb-4">Technologies</h4>
+                  <div className="flex flex-wrap gap-2">
+                    {project.technologies.map((tech, index) => (
+                      <span key={index} className="text-gray-300 bg-[#22333B]/50 px-3 py-1.5 rounded-full text-sm">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Project meta information */}
+                <div className="mb-8">
+                  <h4 className="text-xl font-semibold text-white mb-4">Project Info</h4>
+                  <div className="space-y-3">
+                    <div>
+                      <span className="text-gray-400 block text-sm">Date</span>
+                      <span className="text-white">{project.date || "2023"}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Links section */}
+                <div className="space-y-3">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-[#22333B] hover:bg-[#22333B]/80 text-white px-5 py-3 rounded-md transition-colors w-full"
+                  >
+                    <GithubIcon />
+                    <span>View on GitHub</span>
+                  </a>
+                  <a 
+                    href={project.demo} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-[#5E503F] hover:bg-[#5E503F]/80 text-white px-5 py-3 rounded-md transition-colors w-full"
+                  >
+                    <ExternalLinkIcon />
+                    <span>View Live Demo</span>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -261,53 +430,87 @@ const Projects = () => {
       description:
         "Film Fusion is a sleek movie and TV show discovery site built with React and Tailwind, featuring trending, top-rated, and upcoming content using the TMDB API.",
       image: "ProjectImg/FilmFusion.png",
-      technologies: ["React", "Tailwind", "Javascript"],
+      technologies: ["React", "Tailwind", "Javascript", "TMDB API"],
       github: "https://github.com/Wayn-Git/FilmFusion",
       demo: "https://filmfusionwayn.vercel.app/",
       slug: "#",
+      date: "2023",
+      features: [
+        "Dynamic content fetching from TMDB API",
+        "Trending, top-rated, and upcoming sections",
+        "Responsive design with Tailwind CSS",
+        "Movie and TV show details pages"
+      ]
     },
     {
       title: "Javascript Finance Manager",
       description:
         "A simple yet handy finance tracker built with HTML, CSS, and JavaScript—because keeping track of money shouldn't feel like rocket science. Log expenses, set budgets, and maybe (just maybe) stop wondering where all your money went.",
       image: "ProjectImg/FinanceManager.png",
-      technologies: ["HTML", "CSS", "Javascript"],
+      technologies: ["HTML", "CSS", "Javascript", "LocalStorage"],
       github: "https://github.com/Wayn-Git/Finance_Tracker",
       demo: "https://finance-tracker-lilac-theta.vercel.app/",
       slug: "#",
+      date: "2022",
+      features: [
+        "Expense tracking and categorization",
+        "Budget management features",
+        "Data persistence with LocalStorage",
+        "Interactive charts and visualizations"
+      ]
     },
     
     {
       title: "Gemini Clone",
       description:
-        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It's got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS..",
+        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It's got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS.",
       image: "ProjectImg/GeminiClone.png",
-      technologies: ["Next.js", "TailwindCSS", "Strapi"],
+      technologies: ["Next.js", "TailwindCSS", "React", "Javascript"],
       github: "https://github.com/Wayn-Git/Gemeni_Clone",
       demo: "https://gemeni-clone-sigma.vercel.app/",
       slug: "https://gemeni-clone-sigma.vercel.app/",
+      date: "2023",
+      features: [
+        "AI chat interface with responsive design",
+        "Dark/light mode toggle",
+        "Multiple conversation history",
+        "Modern UI inspired by Google's Gemini"
+      ]
     },
     {
       title: "Nasa Daily Picture",
       description:
         "A sleek React-based web app that connects with NASA's public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen. Built for space lovers and tech geeks alike.",
       image: "ProjectImg/Nasa.png",
-      technologies: ["Next.js", "TailwindCSS", "Strapi"],
+      technologies: ["React", "NASA API", "CSS", "Javascript"],
       github: "https://github.com/Wayn-Git/Nasa_Images",
       demo: "https://nasaimages-delta.vercel.app/",
       slug: "https://nasaimages-delta.vercel.app/",
+      date: "2023",
+      features: [
+        "Daily updates with NASA's APOD API",
+        "Historical image browsing",
+        "High-resolution image viewer",
+        "Detailed astronomical descriptions"
+      ]
     },
     {
       title: "React Portfolio Web",
       description:
         "A sleek and minimal portfolio website built with React, Tailwind CSS, and JavaScript—because first impressions matter. Showcasing projects, skills, and a bit of personality, all wrapped in a clean, responsive design. Simple, effective, and just cool enough to stand out.",
       image: "ProjectImg/PortfolioWeb.png",
-      technologies: ["React", "Tailwind", "Javascript"],
+      technologies: ["React", "Tailwind", "Javascript", "Responsive Design"],
       github: "https://github.com/Wayn-Git/Finance_Tracker",
       demo: "https://bilal-portfolio-omega.vercel.app/",
       slug: "#",
+      date: "2023",
+      features: [
+        "Responsive design for all devices",
+        "Animated UI elements",
+        "Project showcase with detailed modals",
+        "Performance optimized loading"
+      ]
     },
-    
   ];
 
   return (
@@ -336,3 +539,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
