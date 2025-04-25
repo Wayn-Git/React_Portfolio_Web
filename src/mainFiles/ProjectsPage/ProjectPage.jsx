@@ -81,6 +81,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       const navBar = document.querySelector('nav.scroll-smooth');
       if (navBar) navBar.style.display = 'none';
       
+      // Hide mobile menu button
+      const mobileMenuButton = document.querySelector('header.lg\\:hidden');
+      if (mobileMenuButton) mobileMenuButton.style.display = 'none';
+      
       // Ensure DOM update before animation
       const timer = setTimeout(() => {
         setIsActive(true);
@@ -98,6 +102,10 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
       // Show navigation bar when modal is closed
       const navBar = document.querySelector('nav.scroll-smooth');
       if (navBar) navBar.style.display = '';
+      
+      // Show mobile menu button when modal is closed
+      const mobileMenuButton = document.querySelector('header.lg\\:hidden');
+      if (mobileMenuButton) mobileMenuButton.style.display = '';
       
       // Reset body overflow after animation completes
       const timer = setTimeout(() => {
