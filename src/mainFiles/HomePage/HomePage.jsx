@@ -4,8 +4,27 @@ import ExperienceSection from "../ExperiencePage/ExperiencePage";
 import Toolbox from "../ToolBoxPage/ToolBox";
 import ContactPage from "../ConactPage/ContactPage";
 
+// Custom styles for the animation
+const navIndicatorStyle = {
+  animation: "scaleIn 0.3s ease-out forwards",
+  transformOrigin: "left"
+};
+
+// Define the keyframes animation in a style tag for use within the component
+const keyframesStyle = `
+  @keyframes scaleIn {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+`;
+
 export default function HomePage() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("aboutMe");
 
   // Disable page scrolling when mobile menu is active
   useEffect(() => {
@@ -15,8 +34,40 @@ export default function HomePage() {
     };
   }, [isOpen]);
 
+  // Track active section on scroll
+  useEffect(() => {
+    const sections = ["aboutMe", "projects", "work", "toolbox", "contact"];
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // Offset for better detection
+      
+      // Find the current section
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <section className="bg-[#0A0908] scroll-smooth h-[101vh] w-full relative">
+      {/* Add style tag for keyframes */}
+      <style>{keyframesStyle}</style>
+
       {/* Mobile Menu Section */}
       <section
         id="Menu"
@@ -297,10 +348,10 @@ export default function HomePage() {
       <main className="scroll-smooth pl-6 lg:pl-30 lg:pr-30 lg:pt-10 flex flex-col">
         <nav className="scroll-smooth hidden z-999 h-[101vh] w-20 lg:block absolute items-center justify-center pt-35">
           <ul className="scroll-smooth fixed flex h-screen flex-col gap-10 text-primary-800 dark:text-white lg:w-20 xl:w-0">
-            <li>
-              <a href="#aboutMe" title="About" className="scroll-smooth">
+            <li className="relative">
+              <a href="#aboutMe" title="About" className="scroll-smooth flex flex-col items-center">
                 <svg
-                  className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
+                  className={`w-6 hover:text-primary-700 dark:hover:text-primary-500 transition ${activeSection === "aboutMe" ? "text-primary-700 dark:text-primary-500" : ""}`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
@@ -313,12 +364,15 @@ export default function HomePage() {
                   <circle cx="12" cy="7" r="4" />
                   <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                 </svg>
+                {activeSection === "aboutMe" && (
+                  <div className="h-1 w-8 bg-[#22333B] mt-2 rounded-full" style={navIndicatorStyle}></div>
+                )}
               </a>
             </li>
-            <li>
-              <a href="#projects" title="Projects" className="">
+            <li className="relative">
+              <a href="#projects" title="Projects" className="flex flex-col items-center">
                 <svg
-                  className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
+                  className={`w-6 hover:text-primary-700 dark:hover:text-primary-500 transition ${activeSection === "projects" ? "text-primary-700 dark:text-primary-500" : ""}`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
@@ -331,12 +385,15 @@ export default function HomePage() {
                   <path d="M11.414 10l-7.383 7.418a2.091 2.091 0 0 0 0 2.967a2.11 2.11 0 0 0 2.976 0l7.407 -7.385" />
                   <path d="M18.121 15.293l2.586 -2.586a1 1 0 0 0 0 -1.414l-7.586 -7.586a1 1 0 0 0 -1.414 0l-2.586 2.586a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0z" />
                 </svg>
+                {activeSection === "projects" && (
+                  <div className="h-1 w-8 bg-[#22333B] mt-2 rounded-full" style={navIndicatorStyle}></div>
+                )}
               </a>
             </li>
-            <li>
-              <a href="#work" title="Work" className="">
+            <li className="relative">
+              <a href="#work" title="Work" className="flex flex-col items-center">
                 <svg
-                  className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
+                  className={`w-6 hover:text-primary-700 dark:hover:text-primary-500 transition ${activeSection === "work" ? "text-primary-700 dark:text-primary-500" : ""}`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
@@ -355,12 +412,15 @@ export default function HomePage() {
                   <path d="M14 16l1 0" />
                   <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
                 </svg>
+                {activeSection === "work" && (
+                  <div className="h-1 w-8 bg-[#22333B] mt-2 rounded-full" style={navIndicatorStyle}></div>
+                )}
               </a>
             </li>
-            <li>
-              <a href="#toolbox" title="Toolbox" className="">
+            <li className="relative">
+              <a href="#toolbox" title="Toolbox" className="flex flex-col items-center">
                 <svg
-                  className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
+                  className={`w-6 hover:text-primary-700 dark:hover:text-primary-500 transition ${activeSection === "toolbox" ? "text-primary-700 dark:text-primary-500" : ""}`}
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   strokeWidth="2"
@@ -374,13 +434,16 @@ export default function HomePage() {
                   <rect x="9" y="3" width="6" height="4" rx="2" />
                   <path d="M9 14l2 2l4 -4" />
                 </svg>
+                {activeSection === "toolbox" && (
+                  <div className="h-1 w-8 bg-[#22333B] mt-2 rounded-full" style={navIndicatorStyle}></div>
+                )}
               </a>
             </li>
-            <li>
-              <a href="#contact" title="Contact" className="">
+            <li className="relative">
+              <a href="#contact" title="Contact" className="flex flex-col items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-6 hover:text-primary-700 dark:hover:text-primary-500 transition"
+                  className={`w-6 hover:text-primary-700 dark:hover:text-primary-500 transition ${activeSection === "contact" ? "text-primary-700 dark:text-primary-500" : ""}`}
                   viewBox="0 0 24 24"
                   strokeWidth="2"
                   stroke="currentColor"
@@ -392,6 +455,9 @@ export default function HomePage() {
                   <rect x="3" y="5" width="18" height="14" rx="2" />
                   <polyline points="3 7 12 13 21 7" />
                 </svg>
+                {activeSection === "contact" && (
+                  <div className="h-1 w-8 bg-[#22333B] mt-2 rounded-full" style={navIndicatorStyle}></div>
+                )}
               </a>
             </li>
           </ul>
