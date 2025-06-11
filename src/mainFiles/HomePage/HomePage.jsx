@@ -511,7 +511,7 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row mt-4 text-gray-600 dark:text-gray-300 gap-8">
             <div className="flex-1">
               <p>
-                Hey! My name is Bilal. I'm a programmer and an AI/ML student who
+                Hey! My name is Bilal. I'm a 16 Year Old programmer and an AI/ML student who
                 enjoys exploring the world of technology. Outside of studying, I
                 spend my time coding, reading, working out, and sometimes just
                 staring at the sky, lost in thought. I find peace in the little

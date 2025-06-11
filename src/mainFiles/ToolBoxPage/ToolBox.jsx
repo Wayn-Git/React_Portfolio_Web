@@ -1,8 +1,9 @@
-import React from "react";
-
 function ToolBox() {
   return (
-    <section id="toolbox" className="bg-[#0A0908] pt-40 scroll-smooth lg:pr-60 lg:pl-60 h- p-3 w-full relative">
+    <section
+      id="toolbox"
+      className="bg-[#0A0908] pt-40 scroll-smooth lg:pr-60 lg:pl-60 h- p-3 w-full relative"
+    >
       <div className="flex w-full mb-10 items-center">
         <h3 className="whitespace-nowrap font-heading text-lg font-bold uppercase tracking-widest dark:text-white">
           Toolbox
@@ -15,8 +16,8 @@ function ToolBox() {
         <div className="text-lg font-semibold dark:text-white w-full">
           <h1 className="pb-1 text-left">Methods and concepts</h1>
           <p className="text-sm font-semibold pb-5 text-gray-500 dark:text-gray-400 text-left">
-            I blend cutting-edge computer science techniques with savvy management
-            strategies to supercharge my projects.
+            I blend cutting-edge computer science techniques with savvy
+            management strategies to supercharge my projects.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
@@ -39,7 +40,7 @@ function ToolBox() {
         <div className="text-lg font-semibold dark:text-white w-full">
           <h1 className="pb-1 text-left">Languages</h1>
           <p className="text-sm font-semibold pb-5 text-gray-500 dark:text-gray-400 text-left">
-          Programming, markup, and query languages I use.
+            Programming, markup, and query languages I use.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
@@ -58,7 +59,7 @@ function ToolBox() {
               SQL
             </span>
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-fit whitespace-nowrap text-center">
-              Java (Novice)
+              Java
             </span>
           </div>
         </div>
@@ -66,46 +67,66 @@ function ToolBox() {
 
       <div className="flex flex-col pt-15 items-start max-w-3xl mx-auto">
         <div className="text-lg font-semibold dark:text-white w-full">
-          <h1 className="pb-1 text-left">Frontend technologies and libraries</h1>
+          <h1 className="pb-1 text-left">
+            Frontend technologies and libraries
+          </h1>
           <p className="text-sm font-semibold pb-5 text-gray-500 dark:text-gray-400 text-left">
-          Technologies I use to develop user interfaces.
+            Technologies I use to develop user interfaces.
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
-             React
+              React
             </span>
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
-             Tailwind
+              Tailwind
             </span>
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
               Remix
             </span>
-          
+
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              Pandas | Numpy
+            </span>
+
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              Matplotlib
+            </span>
+
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              Seaborn
+            </span>
+
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              Sklearn
+            </span>
+
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              TensorFlow
+            </span>
           </div>
         </div>
       </div>
 
       <div className="flex flex-col pt-15 items-start max-w-3xl mx-auto">
         <div className="text-lg font-semibold dark:text-white w-full">
-          <h1 className="pb-1 text-left">Backend technologies and databases</h1>
+          <h1 className="pb-1 text-left">Will Be Working On / Working On</h1>
           <p className="text-sm font-semibold pb-5 text-gray-500 dark:text-gray-400 text-left">
-          I will be there soon ;)
+            I will be there soon ;
           </p>
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
-             Node js (Goal)
+              Deep Learning
             </span>
-            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
-             Next js (Goal)
+            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-35 whitespace-nowrap text-center">
+              Image Classfication
             </span>
-            <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
-              Express (Goal)
+
+                        <span className="rounded-lg px-2 py-1 text-sm text-gray-300 border border-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-32 whitespace-nowrap text-center">
+              Open CV
             </span>
-          
           </div>
         </div>
       </div>
-      
     </section>
   );
 }

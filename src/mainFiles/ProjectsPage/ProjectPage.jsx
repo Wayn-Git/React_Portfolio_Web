@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 // Simplified SVG icons
 const GithubIcon = () => (
@@ -76,15 +76,15 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     if (isOpen) {
       setMounted(true);
       document.body.style.overflow = "hidden";
-      
+
       // Hide navigation bar when modal is open
-      const navBar = document.querySelector('nav.scroll-smooth');
-      if (navBar) navBar.style.display = 'none';
-      
+      const navBar = document.querySelector("nav.scroll-smooth");
+      if (navBar) navBar.style.display = "none";
+
       // Hide mobile menu button
-      const mobileMenuButton = document.querySelector('header.lg\\:hidden');
-      if (mobileMenuButton) mobileMenuButton.style.display = 'none';
-      
+      const mobileMenuButton = document.querySelector("header.lg\\:hidden");
+      if (mobileMenuButton) mobileMenuButton.style.display = "none";
+
       // Ensure DOM update before animation
       const timer = setTimeout(() => {
         setIsActive(true);
@@ -98,15 +98,15 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
     } else {
       setContentVisible(false);
       setIsActive(false);
-      
+
       // Show navigation bar when modal is closed
-      const navBar = document.querySelector('nav.scroll-smooth');
-      if (navBar) navBar.style.display = '';
-      
+      const navBar = document.querySelector("nav.scroll-smooth");
+      if (navBar) navBar.style.display = "";
+
       // Show mobile menu button when modal is closed
-      const mobileMenuButton = document.querySelector('header.lg\\:hidden');
-      if (mobileMenuButton) mobileMenuButton.style.display = '';
-      
+      const mobileMenuButton = document.querySelector("header.lg\\:hidden");
+      if (mobileMenuButton) mobileMenuButton.style.display = "";
+
       // Reset body overflow after animation completes
       const timer = setTimeout(() => {
         document.body.style.overflow = "";
@@ -145,27 +145,38 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         <button
           onClick={onClose}
           className="fixed top-6 right-6 z-50 flex items-center justify-center h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md transition-all duration-300 shadow-lg"
-          style={{ 
-            transform: isActive ? 'scale(1)' : 'scale(0.8)',
+          style={{
+            transform: isActive ? "scale(1)" : "scale(0.8)",
             opacity: isActive ? 1 : 0,
-            transition: 'transform 0.3s ease-out, opacity 0.3s ease-out',
-            transitionDelay: '0.2s'
+            transition: "transform 0.3s ease-out, opacity 0.3s ease-out",
+            transitionDelay: "0.2s",
           }}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
           </svg>
         </button>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-6">
           {/* Hero section with large image */}
-          <div 
+          <div
             className="relative w-full h-[60vh] md:h-[70vh] lg:h-[75vh] overflow-hidden rounded-lg shadow-2xl"
-            style={{ 
-              transform: isActive ? 'translateY(0)' : 'translateY(40px)',
+            style={{
+              transform: isActive ? "translateY(0)" : "translateY(40px)",
               opacity: isActive ? 1 : 0,
-              transition: 'transform 0.6s ease-out, opacity 0.6s ease-out',
-              transitionDelay: '0.1s'
+              transition: "transform 0.6s ease-out, opacity 0.6s ease-out",
+              transitionDelay: "0.1s",
             }}
           >
             <div className="absolute inset-0 bg-black">
@@ -174,59 +185,74 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 alt={`${project.title} project`}
                 className="w-full h-full object-contain md:object-cover"
                 style={{
-                  transition: 'transform 10s ease-in-out',
-                  transform: contentVisible ? 'scale(1.03)' : 'scale(1)'
+                  transition: "transform 10s ease-in-out",
+                  transform: contentVisible ? "scale(1.03)" : "scale(1)",
                 }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0908] via-[#0A0908]/40 to-transparent"></div>
             </div>
-            
+
             <div className="absolute bottom-0 left-0 w-full p-6 md:p-8 z-10">
-              <div 
+              <div
                 className="flex flex-wrap gap-2 mb-4"
-                style={{ 
-                  transform: contentVisible ? 'translateY(0)' : 'translateY(20px)',
+                style={{
+                  transform: contentVisible
+                    ? "translateY(0)"
+                    : "translateY(20px)",
                   opacity: contentVisible ? 1 : 0,
-                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
-                  transitionDelay: '0.6s'
+                  transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
+                  transitionDelay: "0.6s",
                 }}
               >
                 {project.technologies.map((tech, index) => (
                   <TechTag key={index}>{tech}</TechTag>
                 ))}
               </div>
-              <h3 
+              <h3
                 className="font-heading text-4xl md:text-5xl lg:text-6xl font-semibold text-white mb-2 drop-shadow-lg"
-                style={{ 
-                  transform: contentVisible ? 'translateY(0)' : 'translateY(30px)',
+                style={{
+                  transform: contentVisible
+                    ? "translateY(0)"
+                    : "translateY(30px)",
                   opacity: contentVisible ? 1 : 0,
-                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
-                  transitionDelay: '0.4s'
+                  transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
+                  transitionDelay: "0.4s",
                 }}
               >
                 {project.title}
               </h3>
             </div>
-            
+
             {/* Image controls - zoom/expand */}
-            <div 
+            <div
               className="absolute top-4 right-20 z-10"
-              style={{ 
+              style={{
                 opacity: contentVisible ? 1 : 0,
-                transition: 'opacity 0.3s ease-out',
-                transitionDelay: '0.8s'
+                transition: "opacity 0.3s ease-out",
+                transitionDelay: "0.8s",
               }}
             >
-              <button 
+              <button
                 onClick={(e) => {
                   e.stopPropagation();
-                  window.open(project.image, '_blank');
+                  window.open(project.image, "_blank");
                 }}
                 className="bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-all duration-300"
                 title="View full image"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5"
+                  />
                 </svg>
               </button>
             </div>
@@ -237,31 +263,42 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
             {/* Left column - Main content */}
             <div className="md:col-span-2">
               {/* Project summary */}
-              <div 
+              <div
                 className="mb-12"
-                style={{ 
-                  transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                style={{
+                  transform: contentVisible
+                    ? "translateY(0)"
+                    : "translateY(40px)",
                   opacity: contentVisible ? 1 : 0,
-                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
-                  transitionDelay: '0.5s'
+                  transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
+                  transitionDelay: "0.5s",
                 }}
               >
-                <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">Overview</h4>
-                <p className="text-gray-300 md:text-lg leading-relaxed">{project.description}</p>
+                <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+                  Overview
+                </h4>
+                <p className="text-gray-300 md:text-lg leading-relaxed">
+                  {project.description}
+                </p>
               </div>
-              
+
               {/* Features section - if project has features */}
               {project.features && (
-                <div 
+                <div
                   className="mb-12"
-                  style={{ 
-                    transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                  style={{
+                    transform: contentVisible
+                      ? "translateY(0)"
+                      : "translateY(40px)",
                     opacity: contentVisible ? 1 : 0,
-                    transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
-                    transitionDelay: '0.6s'
+                    transition:
+                      "transform 0.5s ease-out, opacity 0.5s ease-out",
+                    transitionDelay: "0.6s",
                   }}
                 >
-                  <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">Key Features</h4>
+                  <h4 className="text-2xl md:text-3xl font-semibold text-white mb-6">
+                    Key Features
+                  </h4>
                   <ul className="list-disc pl-5 text-gray-300 md:text-lg space-y-3 leading-relaxed">
                     {project.features.map((feature, index) => (
                       <li key={index}>{feature}</li>
@@ -270,55 +307,66 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                 </div>
               )}
             </div>
-            
+
             {/* Right column - Meta information and actions */}
             <div className="md:col-span-1">
-              <div 
+              <div
                 className="bg-[#22333B]/10 rounded-lg p-6 sticky top-10"
-                style={{ 
-                  transform: contentVisible ? 'translateY(0)' : 'translateY(40px)',
+                style={{
+                  transform: contentVisible
+                    ? "translateY(0)"
+                    : "translateY(40px)",
                   opacity: contentVisible ? 1 : 0,
-                  transition: 'transform 0.5s ease-out, opacity 0.5s ease-out',
-                  transitionDelay: '0.7s'
+                  transition: "transform 0.5s ease-out, opacity 0.5s ease-out",
+                  transitionDelay: "0.7s",
                 }}
               >
                 {/* Tech stack details */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-semibold text-white mb-4">Technologies</h4>
+                  <h4 className="text-xl font-semibold text-white mb-4">
+                    Technologies
+                  </h4>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, index) => (
-                      <span key={index} className="text-gray-300 bg-[#22333B]/50 px-3 py-1.5 rounded-full text-sm">
+                      <span
+                        key={index}
+                        className="text-gray-300 bg-[#22333B]/50 px-3 py-1.5 rounded-full text-sm"
+                      >
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
-                
+
                 {/* Project meta information */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-semibold text-white mb-4">Project Info</h4>
+                  <h4 className="text-xl font-semibold text-white mb-4">
+                    Project Info
+                  </h4>
                   <div className="space-y-3">
                     <div>
                       <span className="text-gray-400 block text-sm">Date</span>
-                      <span className="text-white">{project.date || "2023"}</span>
+                      <span className="text-white">
+                        {project.date || "2023"}
+                      </span>
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Links section */}
                 <div className="space-y-3">
-                  <a 
-                    href={project.github} 
-                    target="_blank" 
+                  <a
+                    href={project.github}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-[#22333B] hover:bg-[#22333B]/80 text-white px-5 py-3 rounded-md transition-colors w-full"
                   >
                     <GithubIcon />
                     <span>View on GitHub</span>
                   </a>
-                  <a 
-                    href={project.demo} 
-                    target="_blank" 
+                  <a
+                    href={project.demo}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 bg-[#5E503F] hover:bg-[#5E503F]/80 text-white px-5 py-3 rounded-md transition-colors w-full"
                   >
@@ -339,20 +387,21 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 const ProjectCard = ({ project, isAlternate = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
-  const { title, description, image, technologies, github, demo, slug } = project;
-  
+  const { title, description, image, technologies, github, demo, slug } =
+    project;
+
   const openModal = () => {
     setIsModalOpen(true);
   };
-  
+
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  
+
   return (
     <li className="flex flex-col md:flex-row items-center">
       {/* Image Section */}
-      <div 
+      <div
         className={`relative w-full md:w-3/5 cursor-pointer overflow-hidden mb-4 md:mb-0 md:mt-0 ${
           isAlternate ? "md:order-1" : "md:order-2"
         }`}
@@ -375,19 +424,21 @@ const ProjectCard = ({ project, isAlternate = false }) => {
         </div>
         <div className="w-full pt-[50%] md:pt-[56.25%] relative overflow-hidden">
           <div className="absolute inset-0">
-            <img 
-              src={image} 
-              alt={`${title} project`} 
+            <img
+              src={image}
+              alt={`${title} project`}
               className={`w-full h-full object-cover rounded transition-all duration-700 ease-in-out ${
-                isHovered ? "scale-105 brightness-100" : "scale-100 brightness-90"
+                isHovered
+                  ? "scale-105 brightness-100"
+                  : "scale-100 brightness-90"
               }`}
             />
           </div>
         </div>
       </div>
-      
+
       {/* Info Section */}
-      <div 
+      <div
         className={`flex w-full flex-col md:w-2/5 px-4 md:px-0 ${
           isAlternate ? "md:order-2 md:ml-10" : "md:order-1 md:mr-6"
         }`}
@@ -397,18 +448,16 @@ const ProjectCard = ({ project, isAlternate = false }) => {
             <TechTag key={index}>{tech}</TechTag>
           ))}
         </div>
-        
+
         <h4 className="mt-3 font-heading text-3xl font-semibold dark:text-white">
           {title}
         </h4>
-        
-        <p className="mt-4 text-gray-300">
-          {description}
-        </p>
-        
+
+        <p className="mt-4 text-gray-300">{description}</p>
+
         {/* Mobile: "Read More" + Social Links below */}
         <div className="mt-4 flex items-center justify-between px-2 pb-2 md:hidden">
-          <button 
+          <button
             onClick={openModal}
             className="text-sm font-semibold text-white hover:underline"
           >
@@ -419,9 +468,9 @@ const ProjectCard = ({ project, isAlternate = false }) => {
           </div>
         </div>
       </div>
-      
+
       {/* Modal */}
-      <ProjectModal 
+      <ProjectModal
         project={project}
         isOpen={isModalOpen}
         onClose={closeModal}
@@ -434,6 +483,43 @@ const ProjectCard = ({ project, isAlternate = false }) => {
 const Projects = () => {
   const projects = [
     {
+      title: "Heart Failure Prediction",
+      description:
+        "A machine learning project that predicts heart failure risk using patient data, built with Python, Pandas, and Scikit-learn. Features include data preprocessing, model training, and evaluation metrics. The model analyzes various health indicators to assess heart failure probability.",
+      image: "public/ProjectImg/HeartFailure.png",
+      technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+      github: "https://github.com/Wayn-Git/Heart-Failure-Prediction",
+      demo: "https://github.com/Wayn-Git/Heart-Failure-Prediction",
+      slug: "#",
+      date: "2025",
+      features: [
+        "Data preprocessing and feature engineering",
+        "Multiple machine learning models comparison",
+        "Model evaluation with accuracy metrics",
+        "Visualization of feature importance",
+        "Cross-validation and hyperparameter tuning",
+      ],
+    },
+
+    {
+      title: "Iris Flower Classification",
+      description:
+        "A machine learning classification project that identifies iris flower species based on their measurements. Built with Python, this model uses the classic Iris dataset to demonstrate fundamental concepts in machine learning, including data preprocessing, model training, and species prediction.",
+      image: "public/ProjectImg/IrisFlower.png",
+      technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+      github: "https://github.com/Wayn-Git/Iris-Flower-Classification",
+      demo: "https://github.com/Wayn-Git/Iris-Flower-Classification",
+      slug: "#",
+      date: "2025",
+      features: [
+        "Multiple classification algorithms comparison",
+        "Data visualization and analysis",
+        "Model accuracy evaluation",
+        "Feature importance analysis",
+        "Interactive prediction interface",
+      ],
+    },
+    {
       title: "FilmFusion",
       description:
         "Film Fusion is a sleek movie and TV show discovery site built with React and Tailwind, featuring trending, top-rated, and upcoming content using the TMDB API.",
@@ -442,13 +528,47 @@ const Projects = () => {
       github: "https://github.com/Wayn-Git/FilmFusion",
       demo: "https://filmfusionwayn.vercel.app/",
       slug: "#",
-      date: "2023",
+      date: "2025",
       features: [
         "Dynamic content fetching from TMDB API",
         "Trending, top-rated, and upcoming sections",
         "Responsive design with Tailwind CSS",
-        "Movie and TV show details pages"
-      ]
+        "Movie and TV show details pages",
+      ],
+    },
+    {
+      title: "Ai Assistant",
+      description:
+        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It's got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS.",
+      image: "ProjectImg/Assistant.png",
+      technologies: ["HTML", "TailwindCSS", "React", "Javascript"],
+      github: "https://github.com/Wayn-Git/AiAssistant",
+      demo: "https://ai-assistant-teal-omega.vercel.app/",
+      slug: "https://ai-assistant-teal-omega.vercel.app/",
+      date: "2025",
+      features: [
+        "AI chat interface with responsive design",
+        "Dark/light mode toggle",
+        "Multiple conversation history",
+        "Modern UI inspired by Google's Gemini",
+      ],
+    },
+    {
+      title: "Nasa Daily Picture",
+      description:
+        "A sleek React-based web app that connects with NASA's public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen.",
+      image: "ProjectImg/Nasa.png",
+      technologies: ["React", "NASA API", "CSS", "Javascript"],
+      github: "https://github.com/Wayn-Git/Nasa_Images",
+      demo: "https://nasaimages-delta.vercel.app/",
+      slug: "https://nasaimages-delta.vercel.app/",
+      date: "2025",
+      features: [
+        "Daily updates with NASA's APOD API",
+        "Historical image browsing",
+        "High-resolution image viewer",
+        "Detailed astronomical descriptions",
+      ],
     },
     {
       title: "Javascript Finance Manager",
@@ -464,60 +584,8 @@ const Projects = () => {
         "Expense tracking and categorization",
         "Budget management features",
         "Data persistence with LocalStorage",
-        "Interactive charts and visualizations"
-      ]
-    },
-    
-    {
-      title: "Gemini Clone",
-      description:
-        "A React.js clone of the Gemini platform—because why not build your own AI interface for fun? It's got a sleek UI, responsive design, and a chatbot setup that looks smart (even if it doesn't answer your life problems). Built with React, JavaScript, and Tailwind CSS.",
-      image: "ProjectImg/GeminiClone.png",
-      technologies: ["Next.js", "TailwindCSS", "React", "Javascript"],
-      github: "https://github.com/Wayn-Git/Gemeni_Clone",
-      demo: "https://gemeni-clone-sigma.vercel.app/",
-      slug: "https://gemeni-clone-sigma.vercel.app/",
-      date: "2023",
-      features: [
-        "AI chat interface with responsive design",
-        "Dark/light mode toggle",
-        "Multiple conversation history",
-        "Modern UI inspired by Google's Gemini"
-      ]
-    },
-    {
-      title: "Nasa Daily Picture",
-      description:
-        "A sleek React-based web app that connects with NASA's public API to fetch and display the Astronomy Picture of the Day (APOD). It dynamically updates each day with breathtaking space imagery, detailed descriptions, and titles—bringing the cosmos right to your screen. Built for space lovers and tech geeks alike.",
-      image: "ProjectImg/Nasa.png",
-      technologies: ["React", "NASA API", "CSS", "Javascript"],
-      github: "https://github.com/Wayn-Git/Nasa_Images",
-      demo: "https://nasaimages-delta.vercel.app/",
-      slug: "https://nasaimages-delta.vercel.app/",
-      date: "2023",
-      features: [
-        "Daily updates with NASA's APOD API",
-        "Historical image browsing",
-        "High-resolution image viewer",
-        "Detailed astronomical descriptions"
-      ]
-    },
-    {
-      title: "React Portfolio Web",
-      description:
-        "A sleek and minimal portfolio website built with React, Tailwind CSS, and JavaScript—because first impressions matter. Showcasing projects, skills, and a bit of personality, all wrapped in a clean, responsive design. Simple, effective, and just cool enough to stand out.",
-      image: "ProjectImg/PortfolioWeb.png",
-      technologies: ["React", "Tailwind", "Javascript", "Responsive Design"],
-      github: "https://github.com/Wayn-Git/Finance_Tracker",
-      demo: "https://bilal-portfolio-omega.vercel.app/",
-      slug: "#",
-      date: "2023",
-      features: [
-        "Responsive design for all devices",
-        "Animated UI elements",
-        "Project showcase with detailed modals",
-        "Performance optimized loading"
-      ]
+        "Interactive charts and visualizations",
+      ],
     },
   ];
 
@@ -547,4 +615,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
