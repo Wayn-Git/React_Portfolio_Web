@@ -486,7 +486,7 @@ const Projects = () => {
       title: "Heart Failure Prediction",
       description:
         "A machine learning project that predicts heart failure risk using patient data, built with Python, Pandas, and Scikit-learn. Features include data preprocessing, model training, and evaluation metrics. The model analyzes various health indicators to assess heart failure probability.",
-      image: "public/ProjectImg/HeartFailure.png",
+      image: "ProjectImg/HeartFailure.png",
       technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
       github: "https://github.com/Wayn-Git/Heart-Failure-Prediction",
       demo: "https://github.com/Wayn-Git/Heart-Failure-Prediction",
@@ -505,7 +505,7 @@ const Projects = () => {
       title: "Iris Flower Classification",
       description:
         "A machine learning classification project that identifies iris flower species based on their measurements. Built with Python, this model uses the classic Iris dataset to demonstrate fundamental concepts in machine learning, including data preprocessing, model training, and species prediction.",
-      image: "public/ProjectImg/IrisFlower.png",
+      image: "ProjectImg/IrisFlower.png",
       technologies: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
       github: "https://github.com/Wayn-Git/Iris-Flower-Classification",
       demo: "https://github.com/Wayn-Git/Iris-Flower-Classification",
